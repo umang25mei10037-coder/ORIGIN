@@ -5,7 +5,7 @@
 
 **Team Name: MAVERICK TRIO**
 
-**MUMBER NAMES: UMANG PATEL, VARUN VAISH, MUNNA BABU ANSARI**
+**Team Mumbers Name: Umang Patel, Varun Vaish, Munna Babu Ansari**
 # VANRA
 
 ### Visual AI Network for Rights Administration
