@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # VANRA
 
 ### Visual AI Network for Rights Administration
@@ -313,3 +314,6 @@ d:/ORIGIN HACKATHON/
 - **GitHub:** [GitHub Profile / Organization](https://github.com/)
 - **Problem Statement:** PS-7 (AI-powered Decision Support System for Forest Rights Act Monitoring)
 - **Map Data:** © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors
+=======
+# ORIGIN
+>>>>>>> 68851175929a176011130919f1672237c6fd099e
