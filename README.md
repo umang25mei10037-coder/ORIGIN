@@ -311,7 +311,7 @@ d:/ORIGIN HACKATHON/
 - **Built by:** Maverick Trio (Student of VIT Bhopal)
 - **Affiliation:** Data Science Club of VIT Bhopal · Origin Hackathon 2026
 - **LinkedIn:** [Umang Patel](https://www.linkedin.com/in/umang-patel-bb7720363/)
-- **GitHub:** [GitHub Profile / Organization](https://github.com/)
+- **GitHub:** [GitHub Profile / Organization](https://github.com/umang25mei10037-coder)
 - **Problem Statement:** PS-7 (AI-powered Decision Support System for Forest Rights Act Monitoring)
 - **Map Data:** © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors
 =======
