@@ -3653,3 +3653,536 @@
 }
 
 
+/* ==========================================================================
+   MOBILE HAMBURGER MENU & DRAWER
+   ========================================================================== */
+
+/* Hide hamburger on desktop */
+.mobile-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  padding: 0;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--primary-lighter);
+  border-color: var(--primary);
+}
+
+/* Hamburger icon — 3 bars */
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 20px;
+  height: 16px;
+  position: relative;
+}
+
+.hamburger-icon span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+/* Animate to X when open */
+.hamburger-icon.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-icon.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-icon.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Backdrop overlay */
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 35, 25, 0.55);
+  backdrop-filter: blur(2px);
+  z-index: 1500;
+}
+
+/* Slide-in drawer */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 88vw);
+  background: #ffffff;
+  z-index: 1600;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 40px rgba(14, 35, 25, 0.2);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Drawer header */
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.mobile-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-nav-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--primary-dark);
+}
+
+.mobile-nav-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.mobile-nav-close:hover {
+  background: var(--critical-light);
+  color: var(--critical);
+  border-color: var(--critical);
+}
+
+/* Drawer nav links list */
+.mobile-nav-links {
+  flex: 1;
+  padding: 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  position: relative;
+  min-height: 52px;
+  border: 1px solid transparent;
+}
+
+.mobile-nav-link:hover {
+  background: var(--primary-lighter);
+  color: var(--primary-dark);
+  border-color: rgba(31, 107, 79, 0.15);
+}
+
+.mobile-nav-link.active {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-weight: 700;
+  border-color: rgba(31, 107, 79, 0.25);
+}
+
+.mobile-nav-icon {
+  font-size: 20px;
+  width: 28px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.mobile-nav-label {
+  flex: 1;
+}
+
+.mobile-nav-active-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Drawer footer */
+.mobile-nav-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.mobile-about-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  min-height: 44px;
+  font-family: inherit;
+}
+
+.mobile-about-btn:hover {
+  background: var(--primary-dark);
+}
+
+.mobile-demo-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8B6914;
+  padding: 4px 0;
+}
+
+
+/* ==========================================================================
+   GLOBAL FOCUS STATES — ACCESSIBILITY
+   ========================================================================== */
+
+*:focus-visible {
+  outline: 2.5px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2.5px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Remove default outline when focus-visible is handled */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* ==========================================================================
+   TOUCH TARGET MINIMUMS — ACCESSIBILITY
+   ========================================================================== */
+
+.btn {
+  min-height: 40px;
+}
+
+.about-nav-btn {
+  min-height: 36px;
+  padding: 7px 14px;
+}
+
+.map-control-btn {
+  min-height: 36px;
+}
+
+
+/* ==========================================================================
+   HEADER — RESPONSIVE OVERRIDES
+   ========================================================================== */
+
+/* Show hamburger, hide desktop nav and right badges at ≤960px */
+@media (max-width: 960px) {
+  .nav-links-animated-container {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  /* Hide right-side items on mobile to prevent overflow */
+  .demo-badge {
+    display: none;
+  }
+
+  .ai-status-wrapper {
+    display: none;
+  }
+
+  .about-nav-btn {
+    display: none;
+  }
+
+  .header {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 56px;
+    padding: 0 12px;
+  }
+
+  .logo-text p {
+    display: none; /* hide subtitle on very small screens */
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .logo-text h1 {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .civic-badge {
+    display: none;
+  }
+}
+
+
+/* ==========================================================================
+   FOOTER — RESPONSIVE OVERRIDES
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+  }
+
+  .footer-col.brand-col {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .footer-col.brand-col {
+    grid-column: auto;
+  }
+
+  .footer-inner {
+    padding: 28px 20px 20px !important;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column !important;
+    gap: 10px !important;
+    text-align: center;
+  }
+
+  .footer-bottom-links {
+    flex-wrap: wrap !important;
+    justify-content: center;
+    gap: 4px !important;
+  }
+
+  .footer-affiliation {
+    flex-wrap: wrap;
+  }
+
+  .footer-landscape {
+    height: 70px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    gap: 16px !important;
+  }
+
+  .footer-inner {
+    padding: 20px 16px 16px !important;
+  }
+}
+
+
+/* ==========================================================================
+   INNER PAGE RESPONSIVE — DASHBOARD, CLAIMS, COPILOT
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .main-content {
+    padding: 14px 16px;
+  }
+
+  /* Dashboard KPI */
+  .kpi-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Map section stacks */
+  .map-section {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Copilot stacks */
+  .copilot-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  .copilot-sidebar {
+    display: none;
+  }
+
+  /* Simulator results stack */
+  .simulator-results {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-content {
+    padding: 10px 12px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
+
+  .kpi-value {
+    font-size: 22px;
+  }
+
+  .map-wrapper {
+    height: 340px !important;
+  }
+
+  .claim-info-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .claim-detail-modal {
+    max-height: 95vh;
+    border-radius: var(--radius-md);
+  }
+
+  .why-flagged-modal {
+    max-height: 92vh;
+  }
+
+  .why-flagged-body,
+  .why-flagged-header {
+    padding: 16px 18px;
+  }
+
+  .copilot-main {
+    height: calc(100vh - 160px);
+  }
+
+  .page-header h2 {
+    font-size: 18px;
+  }
+
+  /* Table horizontal scroll wrapper */
+  .table-scroll-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Stat grids go single column */
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .kpi-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px;
+  }
+
+  .kpi-value {
+    font-size: 20px;
+  }
+
+  .kpi-label {
+    font-size: 10px;
+  }
+
+  .map-search input {
+    width: 160px;
+  }
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION — GLOBAL OVERRIDE
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .pulse-dot,
+  .welcome-status-chip .pulse-dot,
+  .demo-badge-dot,
+  .ai-status-dot,
+  .nav-link-active-dot,
+  .footer-pulse,
+  .footer-pulse-delay {
+    animation: none !important;
+  }
+}

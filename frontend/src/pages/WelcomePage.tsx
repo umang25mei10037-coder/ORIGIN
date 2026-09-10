@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import CountUp from '../components/CountUp';
 import { ForestEcosystem } from '../components/ForestEcosystem';
 import { fetchOverview } from '../services/api';
@@ -208,7 +208,7 @@ const PERSONAS: PersonaData[] = [
 ];
 
 export const WelcomePage: React.FC = () => {
-  const navigate = useNavigate();
+  const prefersReducedMotion = useReducedMotion();
 
   // Overview metrics state
   const [metrics, setMetrics] = useState<OverviewMetrics>({
@@ -296,9 +296,9 @@ export const WelcomePage: React.FC = () => {
             ------------------------------------------------------------------ */}
         <section className="welcome-hero">
           <motion.div
-            initial={{ opacity: 0, y: -12 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
           >
             <div className="welcome-status-chip">
               <span className="pulse-dot" />
@@ -308,10 +308,11 @@ export const WelcomePage: React.FC = () => {
 
           <motion.div
             className="welcome-title-row"
-            initial={{ opacity: 0, y: 15 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.1 }}
           >
+            <p className="welcome-eyebrow">🌲 Forest Rights Monitoring Platform</p>
             <h1 className="welcome-hero-title">
               VANRA <span className="brand-gradient">Decision Suite</span>
             </h1>
@@ -322,20 +323,20 @@ export const WelcomePage: React.FC = () => {
 
           <motion.p
             className="welcome-hero-desc"
-            initial={{ opacity: 0, y: 15 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.2 }}
           >
             An AI-powered Decision Support System for Forest Rights Act (FRA) Monitoring.
-            Seamlessly integrating satellite canopy GIS, cadastral revenue maps, and transparent
+            Integrating satellite canopy GIS, cadastral revenue maps, and transparent
             algorithmic attribution to protect tribal livelihoods and accelerate lawful governance.
           </motion.p>
 
           <motion.div
             className="welcome-hero-actions"
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : 0.3 }}
           >
             <Link to="/overview" className="welcome-btn-primary">
               <span>🗺️</span> Enter Live GIS Dashboard
@@ -345,18 +346,18 @@ export const WelcomePage: React.FC = () => {
               <span>✨</span> Ask FRA Copilot
             </Link>
 
-            <Link to="/simulator" className="welcome-btn-secondary">
-              <span>🧪</span> What-If Policy Simulator
+            <Link to="/simulator" className="welcome-btn-secondary hero-btn-hide-mobile">
+              <span>🧪</span> What-If Simulator
             </Link>
 
             <button
-              className="welcome-btn-ghost"
+              className="welcome-btn-ghost hero-btn-hide-mobile"
               onClick={() => {
                 const el = document.getElementById('pipeline-section');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              <span>⚙️</span> Explore Decision Lifecycle ↓
+              <span>⚙️</span> Explore Lifecycle ↓
             </button>
           </motion.div>
         </section>
