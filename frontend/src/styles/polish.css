@@ -1667,7 +1667,8 @@
   background: #FAFBF9;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .evidence-connections-svg {
@@ -2518,7 +2519,9 @@
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
-  height: 600px;
+  min-height: 400px;
+  height: 65vh;
+  max-height: 800px;
   box-shadow: var(--shadow-sm);
   overflow: hidden;
 }
