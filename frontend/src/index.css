@@ -1765,6 +1765,32 @@ body {
   }
 }
 
+@media (max-width: 900px) {
+  .main-content {
+    padding: 16px;
+  }
+
+  .header-left {
+    gap: 12px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .header-right {
+    gap: 8px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .map-section {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
 /* Note: ≤960px and below handled in polish.css for consistency */
 @media (max-width: 768px) {
   .kpi-grid {
@@ -1772,15 +1798,54 @@ body {
   }
 
   .header {
-    padding: 0 16px;
+    padding: 0 12px;
+  }
+
+  .header-left {
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
   }
 
   .main-content {
-    padding: 12px 16px;
+    padding: 12px 14px;
   }
 
   .claim-info-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  /* Prevent horizontal overflow */
+  .logo-brand-container {
+    overflow: hidden;
+  }
+
+  .logo-mountain-backdrop {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 8px 10px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .header {
+    height: 56px;
+    padding: 0 10px;
+  }
+
+  .header-left {
+    gap: 6px;
+  }
+
+  .claim-info-grid {
+    grid-template-columns: 1fr;
   }
 }
 
