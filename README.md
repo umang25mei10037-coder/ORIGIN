@@ -1,326 +1,888 @@
-<<<<<<< HEAD
-
-
-**Made for Origin Hackathon Organised by Data Sicence Club of VIT Bhopal University**
-
-**Team Name: MAVERICK TRIO**
-
-**Team Mumbers Name: Umang Patel, Varun Vaish, Munna Babu Ansari**
-# VANRA
+# 🌲 VANRA
 
 ### Visual AI Network for Rights Administration
-> *"From scattered claims to explainable decisions."*
+
+<p align="center">
+
+**From scattered claims to explainable decisions.**
+
+An AI-powered geospatial decision-support platform for monitoring and accelerating the implementation of the **Forest Rights Act (FRA), 2006**.
+
+<br/>
+
+[![Built for Hackathon](https://img.shields.io/badge/Built%20For-Origin%20Hackathon-111827?style=for-the-badge)](#)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge\&logo=react\&logoColor=white)](#)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge\&logo=typescript\&logoColor=white)](#)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688?style=for-the-badge\&logo=fastapi\&logoColor=white)](#)
+[![Scikit Learn](https://img.shields.io/badge/ML-Scikit--Learn-F7931E?style=for-the-badge\&logo=scikit-learn\&logoColor=white)](#)
+[![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?style=for-the-badge\&logo=sqlite\&logoColor=white)](#)
+
+</p>
 
 ---
 
-## Overview
+## 🏆 Origin Hackathon
 
-**VANRA (Visual AI Network for Rights Administration)** is an AI-powered, geospatial decision-support platform designed to monitor and accelerate implementation of the **Forest Rights Act (FRA), 2006**. 
+**Organised by:** Data Science Club, VIT Bhopal University
 
-Rather than replacing human officers or statutory committees, VANRA synthesizes fragmented land records, spatial coordinates, and processing stage histories into a unified civic intelligence dashboard. It highlights where administrative backlogs exist, explains the exact factors driving risk, and prioritizes which cases require field verification first.
+### 👥 Team — MAVERICK TRIO
 
----
-
-## Problem Statement
-
-**Problem Statement 7 (PS-7):** *AI-powered Decision Support System for Forest Rights Act (FRA) Monitoring.*
-
-Across millions of Individual (IFR) and Community (CFR) claims:
-- Records remain scattered across village Gram Sabhas, Sub-Divisional Committees (SDLC), and district registries.
-- Severe processing delays (frequently exceeding 180 days) go unnoticed until disputes escalate.
-- Boundary discrepancies between historical forest boundaries and revenue survey cadastres create spatial overlap disputes.
-- Authorities lack an explainable decision system to triage which claims need urgent joint field verification.
+| Member                | Role                    |
+| --------------------- | ----------------------- |
+| **Umang Patel**       | Product & Development   |
+| **Varun Vaish**       | Development & Analytics |
+| **Munna Babu Ansari** | Development & Research  |
 
 ---
 
-## Solution
+# 🎯 The Problem
 
-VANRA solves this through a six-stage civic intelligence flow:
+The implementation of the **Forest Rights Act (FRA), 2006** involves large volumes of Individual Forest Rights (IFR) and Community Forest Rights (CFR) claims.
 
-$$\text{FOREST} \longrightarrow \text{LAND} \longrightarrow \text{CLAIMS} \longrightarrow \text{DATA} \longrightarrow \text{AI} \longrightarrow \text{DECISION}$$
+But critical information is often distributed across multiple administrative layers.
 
-1. **GIS Visualization:** Interactive living map connecting national aggregates with district centroids and parcel coordinates.
-2. **Deterministic & ML Anomaly Detection:** Real-time screening for statutory delay thresholds, area discrepancies, and spatial density clusters.
-3. **Explainable Risk Scoring:** Transparent 0–100 index broken down into exact factor contributions.
-4. **Relational Evidence Graph:** Graph topology linking claims, land parcels, cadastral surveys, and forest ranges.
-5. **AI Prioritization & Early Warning:** Dynamically sorted queues showing what to investigate first and predictive bottleneck alerts.
-6. **Policy Simulation & Analyst Copilot:** What-If scenario forecasting and natural language analytical Q&A.
+### Existing challenges
 
----
-
-## Key Features
-
-- **FRA Intelligence Map:** Interactive Leaflet GIS with risk-coded markers, boundary glow transitions, dynamic clustering, and filter layers (*Delayed*, *Mismatches*, *Clusters*, *Critical*).
-- **District Intelligence Panel:** District Implementation Health Index (0–100), AI analytical summaries, factor attribution bars, and localized claim distributions.
-- **"Why is this District Flagged?" Panel:** Explainable modal featuring ASCII-style progress meters (`████████░░ 78%`), normalized factor breakdowns, and non-judicial administrative interpretation.
-- **AI Anomaly Detection Engine:** Hybrid detection classifying *Processing Delays*, *Record Mismatches*, *Spatial Clusters*, *Workflow Bottlenecks*, and *Unusual Parcel Acreage*.
-- **Claim Investigation Portfolio:** Detailed dossier with statutory timeline tracking (*Claim Submitted → Field Verification → SDLC Review → District Review → Final Decision*) and duration tracking.
-- **Relational Evidence Graph:** Visual graph structure (*CLAIM ── LAND PARCEL ── LAND RECORD*, *DISTRICT ── FOREST ZONE*) with interactive node highlighting and relation insights.
-- **AI Priority Queue:** Multi-tier ranked queue with smooth Framer Motion layout reordering, structured reasons bullets, and recommended action boxes.
-- **Early Warning System:** Environmental intelligence cards with subtle animated warning rings alerting officials before delay thresholds breach.
-- **What-If Decision Simulator:** Sensitivity lab featuring interactive capacity sliders, animated live number projections, and clearance forecasts.
-- **FRA Copilot:** Dedicated government analyst assistant providing structured reasoning (*ANALYSIS → RECOMMENDATION → DATA BASIS*) without generative hallucination.
-
----
-
-## Technology Stack
-
-### Frontend
-- **Framework:** React 18 with TypeScript
-- **Build Tool:** Vite 6 / 8
-- **Mapping & GIS:** Leaflet 1.9 & React-Leaflet
-- **Data Visualization:** Recharts
-- **Animations:** Framer Motion (page transitions, layout reordering)
-- **Styling:** Custom Vanilla CSS design system with subtle nature/forest ecosystem micro-animations (`index.css` & `polish.css`)
-
-### Backend
-- **Framework:** FastAPI (Python 3.11)
-- **Server:** Uvicorn ASGI
-- **Data Serialization:** Pydantic models
-
-### Analytical Store & Machine Learning
-- **Database:** SQLite relational engine (`data/vanra.db`)
-- **Machine Learning:** `scikit-learn` Isolation Forest for unsupervised outlier detection
-- **Rule Engine:** Deterministic statutory business rules
-
----
-
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    CLIENT LAYER (React 18)                  │
-│  Leaflet GIS • Framer Motion • Recharts • Forest Ecosystem  │
-└──────────────────────────────┬──────────────────────────────┘
-                               │ HTTP REST (JSON)
-                               ▼
-┌─────────────────────────────────────────────────────────────┐
-│                   API GATEWAY (FastAPI)                     │
-│    /api/overview   /api/districts   /api/claims   /api/what-if│
-└──────────────────────────────┬──────────────────────────────┘
-                               │
-            ┌──────────────────┴──────────────────┐
-            ▼                                     ▼
-┌──────────────────────────────┐    ┌─────────────────────────┐
-│     ML / DECISION ENGINE     │    │      DATABASE LAYER     │
-│  • Deterministic SLA Rules   │    │  SQLite (data/vanra.db) │
-│  • Isolation Forest (sklearn)│◄───┤  • 4,781 synthetic claims│
-│  • Explainability Synthesizer│    │  • 36 district records  │
-└──────────────────────────────┘    └─────────────────────────┘
+```text
+Village Records
+      ↓
+Gram Sabha
+      ↓
+SDLC
+      ↓
+District Registry
+      ↓
+Forest / Revenue Records
 ```
 
----
+This creates several problems:
 
-## Data Notice
+* 📂 Fragmented records
+* ⏳ Long processing delays
+* 🗺️ Boundary and cadastral discrepancies
+* 📊 Limited district-level visibility
+* 🚨 Difficult prioritisation of high-risk claims
+* 🔍 Lack of explainable analytical signals
 
-> **IMPORTANT:** This application is a prototype decision-support tool. All **4,781 claim records, applicant files, and parcel coordinates are synthetic demonstration data** modeled after regional aggregate statistics published by the Ministry of Tribal Affairs (MoTA). **This is NOT official government data** and does not expose private citizen personally identifiable information (PII).
+The result?
 
----
-
-## Anomaly Detection Methodology
-
-VANRA uses a hybrid detection framework combining deterministic statutory thresholds with statistical anomaly detection:
-
-1. **Processing Delay (32% Weight):** Claims exceeding the statutory 180-day SLA window without formal resolution.
-2. **Land Record Mismatch (27% Weight):** Variance between Gram Sabha claimed acreage and recorded revenue cadastral survey.
-3. **Geographic Cluster (19% Weight):** Abnormal spatial density of high-risk claims clustered along sensitive reserve forest tracts.
-4. **Area Anomaly (12% Weight):** Claim parcel size deviating significantly from village distribution or statutory ceilings.
-5. **Workflow Bottleneck (10% Weight):** Prolonged queue stagnation at the Sub-Divisional Committee (SDLC) stage.
+> **Officials can see the backlog — but often cannot immediately see WHY it exists, WHERE it is concentrated, or WHAT should be investigated first.**
 
 ---
 
-## Explainable Risk Score (0–100)
+# 💡 Our Solution — VANRA
 
-Every claim and district is assigned a score from **0 (Lowest Risk / Optimal Health)** to **100 (Highest Risk / Urgent Review)**:
-- **0–35 (Minimal / Low Risk):** Routine processing within standard timelines.
-- **36–64 (Medium Risk):** Approaching review threshold or minor cadastre variance.
-- **65–79 (High Risk):** Exceeds 180 days or exhibits confirmed cadastral discrepancy.
-- **80–100 (Critical Attention):** Multi-factor compound failure requiring joint field verification.
+**VANRA** transforms fragmented administrative information into a unified **civic intelligence system**.
+
+Instead of replacing statutory authorities, VANRA acts as a **decision-support layer** that helps officials:
+
+```text
+WHERE?
+   ↓
+WHAT?
+   ↓
+WHY?
+   ↓
+HOW URGENT?
+   ↓
+WHAT SHOULD I DO?
+```
+
+### VANRA Intelligence Pipeline
+
+```text
+FOREST
+   ↓
+LAND
+   ↓
+CLAIMS
+   ↓
+DATA
+   ↓
+AI
+   ↓
+DECISION
+```
 
 ---
 
-## Role of AI & LLMs
+# 🚀 Core Capabilities
 
-- **What AI Does in VANRA:** AI detects statistical outliers (Isolation Forest), correlates spatial coordinates, and synthesizes factor attribution.
-- **What LLM Does:** Generates clear, non-technical natural language summaries and answers analyst queries in FRA Copilot.
-- **What LLM DOES NOT Do:** The LLM is **NOT** the primary anomaly detector, **NOT** an automated title adjudicator, and **NOT** a replacement for statutory committees.
+### 🗺️ 1. FRA Intelligence Map
+
+Interactive GIS dashboard built using Leaflet.
+
+**Capabilities:**
+
+* District-level visualization
+* Claim-level spatial points
+* Risk-coded markers
+* Dynamic clustering
+* Spatial anomaly layers
+* Delayed claim filtering
+* Record mismatch detection
+* Critical-area highlighting
 
 ---
 
-## Installation
+### 🏛️ 2. District Intelligence
 
-### Prerequisites
-- Node.js 18+ and `npm`
-- Python 3.10 or 3.11 with `pip`
+Every monitored district receives an interpretable health score.
 
-### Step 1: Clone and Set Up Backend
+```text
+District Health
+━━━━━━━━━━━━━━━━━━━━━━
+████████████████░░░░ 78
+```
+
+The dashboard provides:
+
+* District Health Index
+* Claim distribution
+* Risk factors
+* AI-generated analytical summary
+* Factor attribution
+* Priority claims
+
+---
+
+### 🔍 3. Explainable Risk Engine
+
+VANRA doesn't simply say:
+
+> ❌ "This district is risky."
+
+It explains **why**.
+
+Example:
+
+```text
+WHY IS THIS DISTRICT FLAGGED?
+
+Processing Delay       ████████████████ 32%
+Record Mismatch        █████████████    27%
+Spatial Cluster        █████████        19%
+Area Anomaly           █████            12%
+Workflow Bottleneck    ████             10%
+```
+
+This makes the system easier to audit and understand.
+
+---
+
+### 🤖 4. Hybrid AI Anomaly Detection
+
+VANRA combines:
+
+**Deterministic Rules + Machine Learning**
+
+```text
+                 ┌───────────────┐
+                 │  Claim Data   │
+                 └───────┬───────┘
+                         ↓
+              ┌────────────────────┐
+              │ Deterministic Rules│
+              └─────────┬──────────┘
+                        │
+                        +
+              ┌─────────▼──────────┐
+              │ Isolation Forest   │
+              │      ML Model      │
+              └─────────┬──────────┘
+                        ↓
+              ┌────────────────────┐
+              │ Explainable Signal │
+              └─────────┬──────────┘
+                        ↓
+                 Risk Prioritisation
+```
+
+---
+
+### 📋 5. Claim Investigation Portfolio
+
+Each claim can be explored through a structured investigation dossier.
+
+```text
+CLAIM SUBMITTED
+       ↓
+FIELD VERIFICATION
+       ↓
+SDLC REVIEW
+       ↓
+DISTRICT REVIEW
+       ↓
+FINAL DECISION
+```
+
+The system tracks:
+
+* Processing stage
+* Duration
+* Delay status
+* Parcel information
+* Risk score
+* Evidence relationships
+* Recommended action
+
+---
+
+### 🕸️ 6. Relational Evidence Graph
+
+VANRA connects related administrative entities.
+
+```text
+             ┌──────────────┐
+             │    CLAIM     │
+             └──────┬───────┘
+                    │
+             ┌──────▼───────┐
+             │ LAND PARCEL  │
+             └──────┬───────┘
+                    │
+             ┌──────▼───────┐
+             │ LAND RECORD  │
+             └──────────────┘
+
+DISTRICT ─────── FOREST ZONE
+```
+
+This provides a more contextual view of each claim.
+
+---
+
+### ⚡ 7. AI Priority Queue
+
+Automatically ranks cases according to urgency.
+
+```text
+🔴 CRITICAL
+   ↓
+🟠 HIGH
+   ↓
+🟡 MEDIUM
+   ↓
+🟢 LOW
+```
+
+Each recommendation includes the underlying reasons instead of presenting an unexplained score.
+
+---
+
+### 🚨 8. Early Warning System
+
+VANRA attempts to identify emerging bottlenecks **before they become severe backlogs**.
+
+Signals include:
+
+* Increasing processing duration
+* Growing queue sizes
+* Approaching statutory thresholds
+* Spatial concentration
+* Workflow stagnation
+
+---
+
+### 🎛️ 9. What-If Simulator
+
+Officials can experiment with operational capacity.
+
+Example:
+
+```text
+Current Capacity
+20 claims / week
+
+          ↓
+
+Increase Capacity
+45 claims / week
+
+          ↓
+
+Projected Clearance
+██████████████████░░
+
+          ↓
+
+Estimated Backlog Reduction
+↑
+```
+
+This helps evaluate operational scenarios before implementation.
+
+---
+
+### 💬 10. FRA Copilot
+
+A structured analytical assistant for government analysts.
+
+Instead of producing ungrounded answers, the Copilot follows:
+
+```text
+ANALYSIS
+   ↓
+RECOMMENDATION
+   ↓
+DATA BASIS
+```
+
+Example query:
+
+> **"Why is Mandla high risk?"**
+
+The system explains the contributing factors using application data.
+
+---
+
+# 🧠 Risk Scoring
+
+Each claim and district receives a score from:
+
+### `0 → 100`
+
+|      Score | Classification | Meaning                         |
+| ---------: | -------------- | ------------------------------- |
+|   **0–35** | 🟢 Low         | Routine processing              |
+|  **36–64** | 🟡 Medium      | Approaching review threshold    |
+|  **65–79** | 🟠 High        | Significant delay / discrepancy |
+| **80–100** | 🔴 Critical    | Multi-factor urgent review      |
+
+---
+
+# 📊 Anomaly Detection Framework
+
+VANRA currently uses five major signals:
+
+| Signal                  |  Weight |
+| ----------------------- | ------: |
+| ⏳ Processing Delay      | **32%** |
+| 📑 Land Record Mismatch | **27%** |
+| 🗺️ Geographic Cluster  | **19%** |
+| 📐 Area Anomaly         | **12%** |
+| 🔄 Workflow Bottleneck  | **10%** |
+
+### Processing Delay
+
+Claims exceeding the configured processing threshold are flagged for review.
+
+### Land Record Mismatch
+
+Compares claimed acreage against relevant cadastral/revenue records.
+
+### Geographic Cluster
+
+Identifies unusual concentrations of high-risk claims.
+
+### Area Anomaly
+
+Detects parcels whose area significantly differs from the surrounding distribution.
+
+### Workflow Bottleneck
+
+Identifies claims experiencing prolonged stagnation at specific administrative stages.
+
+---
+
+# 🏗️ System Architecture
+
+```text
+┌─────────────────────────────────────────────────────────┐
+│                    VANRA FRONTEND                       │
+│                                                         │
+│ React 18 • TypeScript • Leaflet • Recharts             │
+│ Framer Motion • Custom CSS Design System               │
+└───────────────────────┬─────────────────────────────────┘
+                        │
+                        │ REST / JSON
+                        ▼
+┌─────────────────────────────────────────────────────────┐
+│                    FASTAPI BACKEND                      │
+│                                                         │
+│ Overview • Districts • Claims • Priority • Simulator   │
+│ Early Warning • Evidence • FRA Copilot                 │
+└───────────────────────┬─────────────────────────────────┘
+                        │
+             ┌──────────┴──────────┐
+             ▼                     ▼
+┌──────────────────────┐  ┌────────────────────────────┐
+│   AI / RULE ENGINE   │  │       DATABASE             │
+│                      │  │                            │
+│ SLA Rules            │  │ SQLite                     │
+│ Isolation Forest     │◄─┤ Synthetic Claims           │
+│ Explainability       │  │ District Records           │
+└──────────────────────┘  └────────────────────────────┘
+```
+
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
+
+| Technology        | Purpose               |
+| ----------------- | --------------------- |
+| **React 18**      | UI framework          |
+| **TypeScript**    | Type-safe development |
+| **Vite**          | Build tooling         |
+| **Leaflet**       | GIS mapping           |
+| **React-Leaflet** | React map integration |
+| **Recharts**      | Data visualisation    |
+| **Framer Motion** | Animations            |
+| **Vanilla CSS**   | Design system         |
+
+## Backend
+
+| Technology      | Purpose         |
+| --------------- | --------------- |
+| **Python 3.11** | Backend runtime |
+| **FastAPI**     | REST API        |
+| **Uvicorn**     | ASGI server     |
+| **Pydantic**    | Data validation |
+
+## AI / Data
+
+| Technology              | Purpose                        |
+| ----------------------- | ------------------------------ |
+| **scikit-learn**        | Machine learning               |
+| **Isolation Forest**    | Unsupervised anomaly detection |
+| **SQLite**              | Relational analytical database |
+| **Deterministic Rules** | Statutory/business logic       |
+
+---
+
+# 📦 Dataset
+
+> ⚠️ **Important Data Notice**
+
+VANRA is a **prototype**.
+
+The application currently uses:
+
+* **4,781 synthetic claim records**
+* Synthetic applicant information
+* Synthetic parcel coordinates
+* **36 district records**
+
+The data is designed for **demonstration and hackathon purposes** and is modelled around publicly available regional patterns.
+
+### This data is:
+
+❌ Not official government registry data
+❌ Not production NIC data
+❌ Not private citizen data
+❌ Not intended for real-world title adjudication
+
+---
+
+# 🤖 Role of AI
+
+VANRA deliberately separates **AI assistance** from statutory decision-making.
+
+### AI DOES
+
+✅ Detect statistical outliers
+✅ Identify unusual spatial patterns
+✅ Correlate risk factors
+✅ Generate analytical summaries
+✅ Prioritise cases
+✅ Support what-if analysis
+
+### AI DOES NOT
+
+❌ Approve land titles
+❌ Reject claims
+❌ Replace Gram Sabhas
+❌ Replace SDLC/DLC authorities
+❌ Make legally binding decisions
+
+> **Human officers remain responsible for statutory decisions and field verification.**
+
+---
+
+# ⚙️ Installation
+
+## Prerequisites
+
+Make sure you have:
+
+* Node.js **18+**
+* npm
+* Python **3.10+**
+* pip
+
+---
+
+## 1️⃣ Clone Repository
+
 ```bash
-# Navigate to workspace
-cd "d:/ORIGIN HACKATHON"
+git clone https://github.com/umang25mei10037-coder/ORIGIN.git
 
-# Install backend dependencies
+cd ORIGIN
+```
+
+---
+
+## 2️⃣ Backend Setup
+
+```bash
 pip install -r backend/requirements.txt
 ```
 
-### Step 2: Set Up Frontend
+Start FastAPI:
+
 ```bash
-# Navigate to frontend
+python backend/main.py
+```
+
+Backend:
+
+```text
+http://localhost:8000
+```
+
+Swagger API documentation:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+## 3️⃣ Frontend Setup
+
+```bash
 cd frontend
 
-# Install frontend packages
 npm install
-```
 
----
-
-## Running the Project
-
-### Start FastAPI Backend
-```bash
-# From repository root
-python backend/main.py
-# Backend runs at http://localhost:8000 (Swagger docs at http://localhost:8000/docs)
-```
-
-### Start Vite Frontend
-```bash
-# In frontend directory
 npm run dev
-# Frontend runs at http://localhost:5173
+```
+
+Frontend:
+
+```text
+http://localhost:5173
 ```
 
 ---
 
-## Environment Variables
+# 🔐 Environment Variables
 
-Copy `.env.example` to `.env`:
+Create your `.env` file:
+
 ```bash
 cp .env.example .env
 ```
 
-| Variable | Default Value | Description |
-| :--- | :--- | :--- |
-| `BACKEND_HOST` | `0.0.0.0` | Host interface for FastAPI server |
-| `BACKEND_PORT` | `8000` | Port for FastAPI server |
-| `VITE_API_URL` | `http://localhost:8000` | Base URL used by React frontend to reach REST API |
-| `DATABASE_PATH` | `./data/vanra.db` | Local file path to SQLite analytical database |
-| `LLM_API_KEY` | *(Optional)* | Optional external API key; deterministic fallback active |
+| Variable        | Default                 | Purpose                  |
+| --------------- | ----------------------- | ------------------------ |
+| `BACKEND_HOST`  | `0.0.0.0`               | Backend host             |
+| `BACKEND_PORT`  | `8000`                  | Backend port             |
+| `VITE_API_URL`  | `http://localhost:8000` | API base URL             |
+| `DATABASE_PATH` | `./data/vanra.db`       | SQLite database          |
+| `LLM_API_KEY`   | Optional                | External LLM integration |
 
 ---
 
-## Project Structure
+# 📁 Project Structure
 
-```
-d:/ORIGIN HACKATHON/
-├── .env.example                  # Environment configuration template
-├── README.md                     # Comprehensive project guide
+```text
+ORIGIN/
+│
+├── README.md
+├── .env.example
+│
 ├── data/
-│   └── vanra.db                  # Pre-seeded SQLite database (4,781 claims)
+│   └── vanra.db
+│
 ├── docs/
-│   ├── ARCHITECTURE.md           # Deep dive into system design & data flow
-│   ├── AI_METHODOLOGY.md         # Anomaly detection & explainability formulation
-│   ├── DATA_DICTIONARY.md        # Database schema & field documentation
-│   ├── DATA_SOURCES.md           # External GIS provenance & licensing
-│   ├── DEMO_SCRIPT.md            # 3–5 minute presentation sequence
-│   └── SECURITY_AND_ETHICS.md    # Ethical AI principles & governance safeguards
+│   ├── ARCHITECTURE.md
+│   ├── AI_METHODOLOGY.md
+│   ├── DATA_DICTIONARY.md
+│   ├── DATA_SOURCES.md
+│   ├── DEMO_SCRIPT.md
+│   └── SECURITY_AND_ETHICS.md
+│
 ├── backend/
-│   ├── main.py                   # FastAPI server, REST API endpoints & Copilot
-│   ├── generate_data.py          # Synthetic dataset generator
-│   └── requirements.txt          # Python dependencies
+│   ├── main.py
+│   ├── generate_data.py
+│   └── requirements.txt
+│
 └── frontend/
-    ├── index.html                # Application root with Inter typography
-    ├── package.json              # Frontend scripts & dependencies
+    ├── index.html
+    ├── package.json
+    │
     └── src/
-        ├── App.tsx               # Route transitions & layout wrapper
-        ├── index.css             # Core styling & design tokens
+        ├── App.tsx
+        ├── index.css
+        │
         ├── config/
-        │   └── appConfig.ts      # Centralized metadata & team information
+        │   └── appConfig.ts
+        │
         ├── styles/
-        │   └── polish.css        # Forest ecosystem animations & civic UI polish
+        │   └── polish.css
+        │
         ├── components/
-        │   ├── Header.tsx        # Top navigation with mountain visual & AI status
-        │   ├── Footer.tsx        # Dark forest green footer with metadata
-        │   ├── AiStatusIndicator.tsx # Animated scanning pipeline modal
-        │   ├── AboutModal.tsx    # Problem, solution, and decision flow modal
-        │   ├── ForestEcosystem.tsx # Reusable SVG mountain & particle animation
-        │   ├── BrandedLoader.tsx # Branded mountain loading state
-        │   ├── EmptyForestState.tsx # Meaningful empty state component
-        │   ├── WhyFlagged.tsx    # Explainable factor breakdown modal
-        │   ├── ClaimDetail.tsx   # Dossier, statutory timeline & Evidence Graph
-        │   └── CountUp.tsx       # Smooth number animation utility
+        │   ├── Header.tsx
+        │   ├── Footer.tsx
+        │   ├── AiStatusIndicator.tsx
+        │   ├── AboutModal.tsx
+        │   ├── ForestEcosystem.tsx
+        │   ├── BrandedLoader.tsx
+        │   ├── EmptyForestState.tsx
+        │   ├── WhyFlagged.tsx
+        │   ├── ClaimDetail.tsx
+        │   └── CountUp.tsx
+        │
         ├── pages/
-        │   ├── Dashboard.tsx     # Living map, KPI cards & district intelligence
-        │   ├── ClaimsPage.tsx    # Filterable claims audit registry
-        │   ├── AnomaliesPage.tsx # Anomaly distribution & signal explorer
-        │   ├── PriorityPage.tsx  # AI Priority Queue with animated reordering
-        │   ├── EarlyWarningPage.tsx # Predictive threshold signal cards
-        │   ├── SimulatorPage.tsx # What-If decision sensitivity lab
-        │   └── CopilotPage.tsx   # Structured civic analyst assistant
+        │   ├── Dashboard.tsx
+        │   ├── ClaimsPage.tsx
+        │   ├── AnomaliesPage.tsx
+        │   ├── PriorityPage.tsx
+        │   ├── EarlyWarningPage.tsx
+        │   ├── SimulatorPage.tsx
+        │   └── CopilotPage.tsx
+        │
         └── services/
-            └── api.ts            # REST API client
+            └── api.ts
 ```
 
 ---
 
-## API Endpoints
+# 🔌 API Endpoints
 
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `GET` | `/api/overview` | National summary statistics, approval rates, and delay distributions |
-| `GET` | `/api/districts` | List of 36 monitored districts with health scores and coordinates |
-| `GET` | `/api/districts/{name}` | In-depth factor breakdown and top risk claims for a district |
-| `GET` | `/api/claims/map/points` | Lightweight geospatial points for GIS rendering with layer filters |
-| `GET` | `/api/claims` | Paginated and filterable claims list |
-| `GET` | `/api/claims/{id}` | Complete claim investigation portfolio |
-| `GET` | `/api/evidence/{id}` | Relational graph nodes and edges for claim |
-| `GET` | `/api/priority` | Ordered queue of claims and districts requiring immediate review |
-| `GET` | `/api/early-warning` | Active threshold warnings and backlog growth signals |
-| `POST` | `/api/what-if` | Simulation endpoint projecting backlog clearance from capacity inputs |
-| `POST` | `/api/copilot` | Natural language analytical Q&A grounded in application data |
-
----
-
-## 3–5 Minute Hackathon Demo Flow
-
-1. **Overview (`/`):** View national living map, modern KPI cards with CountUp animation, and click *"Run Scan"* on the AI indicator.
-2. **District Selection:** Click **Mandla** on the map; watch camera flyTo zoom, boundary glow highlight, and side intelligence panel slide in.
-3. **"Why is this district flagged?":** Click to show the explainable factor breakdown (Processing Delay 32%, Record Mismatch 27%) and qualified AI context.
-4. **Claim Investigation (`ClaimDetail`):** Open top priority claim `FRA-MP-00482`. Show the **5-stage statutory timeline** and switch to the **Evidence Graph** to inspect relational connections.
-5. **Priority Queue (`/priority`):** Demonstrate ranked claims and switch urgency filters to show smooth Framer Motion layout reordering.
-6. **Early Warning (`/early-warning`):** Show environmental intelligence cards with subtle animated warning rings.
-7. **What-If Simulator (`/simulator`):** Move capacity slider from 20 to 45 claims/week and watch animated clearance projections live.
-8. **FRA Copilot (`/copilot`):** Query *"Why is Mandla high risk?"* to reveal structured reasoning (*ANALYSIS → RECOMMENDATION → DATA BASIS*).
-9. **About & Footer:** Open About modal to review the core flow: `WHERE → WHAT → WHY → HOW URGENT → WHAT SHOULD I DO?`.
+| Method | Endpoint                 | Purpose               |
+| ------ | ------------------------ | --------------------- |
+| `GET`  | `/api/overview`          | National overview     |
+| `GET`  | `/api/districts`         | District intelligence |
+| `GET`  | `/api/districts/{name}`  | District details      |
+| `GET`  | `/api/claims/map/points` | GIS claim points      |
+| `GET`  | `/api/claims`            | Claims registry       |
+| `GET`  | `/api/claims/{id}`       | Claim investigation   |
+| `GET`  | `/api/evidence/{id}`     | Evidence graph        |
+| `GET`  | `/api/priority`          | Priority queue        |
+| `GET`  | `/api/early-warning`     | Early warnings        |
+| `POST` | `/api/what-if`           | Scenario simulation   |
+| `POST` | `/api/copilot`           | FRA Copilot           |
 
 ---
 
-## Limitations
+# 🎬 Hackathon Demo Flow
 
-- **Synthetic Data:** The system operates on synthetic demonstration data modeled after regional patterns, not live production NIC registries.
-- **Not a Judicial Determinator:** Algorithmic outputs are non-binding decision-support signals and cannot reject or approve land titles.
-- **Human-in-the-Loop:** All flagged discrepancies require field verification by joint Forest & Revenue survey officers.
-- **Modelled Projections:** What-If scenario forecasts are illustrative sensitivity calculations based on constant velocity assumptions.
+For a **3–5 minute presentation**, follow this sequence:
+
+### 01 — Dashboard
+
+Start with the national intelligence dashboard.
+
+Show:
+
+* KPI cards
+* Living GIS map
+* Risk distribution
+* AI scan
+
+### 02 — District Intelligence
+
+Select **Mandla**.
+
+Demonstrate:
+
+* Map zoom
+* District health score
+* Claim distribution
+* Risk factors
+
+### 03 — Explainability
+
+Open:
+
+> **"Why is this district flagged?"**
+
+Show the weighted factor breakdown.
+
+### 04 — Claim Investigation
+
+Open a priority claim such as:
+
+```text
+FRA-MP-00482
+```
+
+Show:
+
+* Statutory timeline
+* Processing duration
+* Claim information
+* Evidence Graph
+
+### 05 — Priority Queue
+
+Open the AI Priority Queue.
+
+Show how claims are ranked according to urgency.
+
+### 06 — Early Warning
+
+Demonstrate emerging processing bottlenecks.
+
+### 07 — What-If Simulator
+
+Increase operational capacity.
+
+Example:
+
+```text
+20 claims/week
+       ↓
+45 claims/week
+```
+
+Show the projected backlog clearance.
+
+### 08 — FRA Copilot
+
+Ask:
+
+> **"Why is Mandla high risk?"**
+
+Show:
+
+```text
+ANALYSIS
+↓
+RECOMMENDATION
+↓
+DATA BASIS
+```
+
+### 09 — Closing
+
+Finish with the central idea:
+
+> **VANRA doesn't replace the decision-maker.
+> It helps the decision-maker know where to look first — and why.**
 
 ---
 
-## Future Scope
+# 🔮 Future Scope
 
-1. **Official NIC / State Portal Integration:** Direct API ingestion from state revenue management portals and Bhuvan GIS servers.
-2. **Satellite Imagery & Temporal Monitoring:** Automated change-detection via Sentinel-2 and Landsat imagery to verify historical forest land occupation prior to December 13, 2005.
-3. **Field Officer Mobile App:** Offline-capable GPS polygon mapping application allowing Gram Sabha FRCs to sync ground-truth verification data.
-4. **Multilingual Interface:** Support for Hindi, Gondi, Santhali, and regional languages for accessible village-level engagement.
-5. **Role-Based Access Control (RBAC):** Strict permissions distinguishing State Collectors, SDLC officers, and Gram Sabha members.
+### 🏛️ Government Data Integration
+
+Connect with official state revenue and forest-rights systems.
+
+### 🛰️ Satellite Intelligence
+
+Integrate Sentinel-2 / Landsat imagery for temporal land-use analysis.
+
+### 📱 Field Officer Application
+
+Build an offline-first mobile application for:
+
+* GPS polygon mapping
+* Field verification
+* Evidence capture
+* Ground-truth synchronisation
+
+### 🌐 Multilingual Governance
+
+Support:
+
+* Hindi
+* Gondi
+* Santhali
+* Regional languages
+
+### 🔐 Role-Based Access
+
+Introduce permission levels for:
+
+```text
+State Officials
+      ↓
+District Authorities
+      ↓
+SDLC Officers
+      ↓
+Field Officers
+```
 
 ---
 
-## License & Credits
+# ⚠️ Limitations
 
-- **Built by:** Maverick Trio (Student of VIT Bhopal)
-- **Affiliation:** Data Science Club of VIT Bhopal · Origin Hackathon 2026
-- **LinkedIn:** [Umang Patel](https://www.linkedin.com/in/umang-patel-bb7720363/)
-- **GitHub:** [GitHub Profile / Organization](https://github.com/umang25mei10037-coder)
-- **Problem Statement:** PS-7 (AI-powered Decision Support System for Forest Rights Act Monitoring)
-- **Map Data:** © [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors
-=======
-# ORIGIN
->>>>>>> 68851175929a176011130919f1672237c6fd099e
+VANRA is currently a prototype and has several limitations:
+
+* Synthetic demonstration dataset
+* No direct integration with government registries
+* Model outputs are decision-support signals
+* Spatial outputs require ground verification
+* What-if projections assume simplified operational conditions
+* AI outputs should not be interpreted as legal decisions
+
+---
+
+# 🌍 Why VANRA Matters
+
+Traditional dashboards answer:
+
+> **"What is happening?"**
+
+VANRA aims to answer:
+
+> **"What is happening, why is it happening, where should we investigate, and what should we do next?"**
+
+That shift — from **visualisation to actionable intelligence** — is the core of VANRA.
+
+---
+
+# 👨‍💻 Team
+
+## MAVERICK TRIO
+
+**Origin Hackathon 2026**
+
+**Data Science Club — VIT Bhopal University**
+
+### Umang Patel
+
+🔗 LinkedIn: https://www.linkedin.com/in/umang-patel-bb7720363/
+
+### GitHub
+
+🔗 https://github.com/umang25mei10037-coder
+
+---
+
+# 🗺️ Map Attribution
+
+Map visualisation uses OpenStreetMap data.
+
+© OpenStreetMap contributors
+
+---
+
+# 📜 License & Credits
+
+Built for **Origin Hackathon 2026** organised by the **Data Science Club, VIT Bhopal University**.
+
+**Problem Statement:**
+PS-7 — AI-powered Decision Support System for Forest Rights Act Monitoring.
+
+---
+
+<p align="center">
+
+### 🌲 VANRA
+
+**Visual AI Network for Rights Administration**
+
+*"From scattered claims to explainable decisions."*
+
+<br/>
+
+**Built with data • AI • GIS • and human-centred governance**
+
+</p>
